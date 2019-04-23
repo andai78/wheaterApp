@@ -30,7 +30,6 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.cities = CITIES;
-    console.log(this.geolacation);
     this.geolacation.getCurrentPosition()
       .then((resp: any) => {
         return this.weatherService.getWeaterCity(
@@ -40,7 +39,6 @@ export class HomePage implements OnInit {
             this.mainTemperature = respApi.main.temp;
             this.mainCity = respApi.name;
             this.icon = this.weatherService.getWeaterIcon(respApi.weather[0].icon);
-            console.log(respApi)
         })
       })
       .catch(err => console.log(err));
@@ -80,7 +78,6 @@ export class HomePage implements OnInit {
                 this.favoriteCity.setTemp(resp.main.temp);
                 this.favoriteCity.setIcon(this.weatherService.getWeaterIcon(resp.weather[0].icon));
                 this.cities.push(this.favoriteCity);
-                console.log(this.favoriteCity)
               })
           }
         },
@@ -88,7 +85,6 @@ export class HomePage implements OnInit {
           text: 'Annuler',
           role: 'cancel',
           handler: () => {
-            console.log('annuler')
           }
         }
       ],
