@@ -1,14 +1,69 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+      <ion-icon (click)="addFavorite()" name="add-circle" class="right-icon"></ion-icon>
     <ion-title>
-      Ionic Blank
+      Météo
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+    Ma position
   </div>
+  <ion-grid>
+    <ion-row justify-content-center align-items-center>
+      <ion-col size="2">
+        <div>
+          {{mainTemperature | number: '1.0-0'}}
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <img [src]="icon" />
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div>
+          {{mainCity}}
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <div>
+          <ion-button expand="block" (click)="goToDetails(mainCity)">
+            Detail
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="ion-padding">
+    Favoris
+  </div>
+  <ion-grid>
+    <ion-row *ngFor="let city of cities" justify-content-center align-items-center>
+        <ion-col size="2">
+          <div>
+            {{city.temperature | number: '1.0-0'}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+            <img [src]="city.icon" />
+          </div>
+        </ion-col>
+        <ion-col size="6">
+          <div>
+            {{city.name}}
+          </div>
+        </ion-col>
+        <ion-col size="2">
+          <div>
+            <ion-button expand="block" (click)="goToDetails(city.name)">
+              Detail
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,5 +1,7 @@
 {
   "name": "wheaterApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
